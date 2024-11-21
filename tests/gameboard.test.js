@@ -25,7 +25,7 @@ test('recieve an attack', () => {
     const gameboard = Gameboard();
     const ship = Ship(2);
     gameboard.placeShip(ship, 0, 0, 'horizontal');
-    console.log(gameboard.gameboard)
+    // console.log(gameboard.gameboard)
     gameboard.receiveAttack(0, 0);
     gameboard.receiveAttack(1, 0);
     gameboard.receiveAttack(2, 0);

@@ -1,4 +1,4 @@
-export default function Player(name) {
+export function Player(name) {
     const attack = (gameboard, x, y) => {
       return gameboard.receiveAttack(x, y);
     };

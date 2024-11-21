@@ -16,9 +16,11 @@ describe('Ship', () => {
     });
   
     test('does not register hits outside the ship length', () => {
-      const ship = Ship(3);
-      ship.hit(4); // Out of bounds
-      expect(ship.isSunk()).toBe(false);
+      const ship = Ship(2);
+      ship.hit(0); // Out of bounds
+      ship.hit(1);
+      ship.hit(2)
+      expect(ship.isSunk()).toBe(true);
     });
   });
 

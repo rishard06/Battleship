@@ -1,3 +1,5 @@
+import { Ship } from './ship.js';
+
 export function Gameboard() {
     const gameboard = Array(10).fill(null).map(() => Array(10).fill(null));
     const ships = [];
@@ -17,15 +19,12 @@ export function Gameboard() {
     }
     
     const receiveAttack = (x, y) => {
-        const cell = gameboard[x][y];
+        const target = gameboard[x][y];
 
-        if (cell) {
-            cell.hit();
-            return "hit";
-        } else {
-            gameboard[x][y] = "miss";
-            return "miss";
-        }
+        if (target && target.hit) {
+            target.hit(); // Call the ship's hit method
+          }
+          return target !== null;
     }
 
     const allShipsSunk = () => ships.every((ship) => ship.isSunk());
