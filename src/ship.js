@@ -1,16 +1,14 @@
-export function Ship(length) {
-    const hits = Array(length).fill(false);
+export class Ship {
+  constructor(length) {
+    this.length = length;  
+    this.hits = 0;
+  }
 
-  const hit = () => {
-    for (let i = 0; i < length; i++) {
-      if (!hits[i]) {
-        hits[i] = true;
-        break; // Register one hit at a time
-      }
-    }
+  hit () {
+    if (this.hits < this.length) this.hits++;
   };
 
-  const isSunk = () => hits.every(Boolean);
-
-  return { length, hit, isSunk };
+  isSunk () {
+    return this.hits >= this.length;
+  }
 }

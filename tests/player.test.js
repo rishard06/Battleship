@@ -1,24 +1,22 @@
 import { Player } from '../src/player.js';
-import { Gameboard } from '../src/gameboard.js';
-import { Ship } from '../src/ship.js';
 
-test('can attack an opponent board', () => {
-    const player = Player('Player 1');
-    const opponentBoard = Gameboard();
-    const ship = Ship(2);
-    opponentBoard.placeShip(ship, 0, 0, 'horizontal');
-    player.attack(opponentBoard, 0, 0);
-    player.attack(opponentBoard, 0, 1);
-    player.attack(opponentBoard, 0, 2);
-    expect(opponentBoard.gameboard[0][0].isSunk()).toBe(true);
-});
-
-test('can sink a ship with successive attacks', () => {
-    const player = Player('Player 1');
-    const opponentBoard = Gameboard();
-    const ship = Ship(2);
-    opponentBoard.placeShip(ship, 0, 0, 'horizontal');
-    player.attack(opponentBoard, 0, 0);
-    // player.attack(opponentBoard, 0, 1);
-    expect(opponentBoard.allShipsSunk()).toBe(false);     
-});
+describe('Player', () => {
+    let player1, player2;
+  
+    beforeEach(() => {
+      player1 = new Player('Player1');
+      player2 = new Player('Player2');
+      player2.gameboard.placeShip([0, 0], 'horizontal', 3);
+    });
+  
+    test('attacks opponent board and hits a ship', () => {
+      const result = player1.attack(player2.gameboard, [0, 0]);
+      expect(result).toBe('hit');
+    });
+  
+    test('attacks opponent board and misses', () => {
+      const result = player1.attack(player2.gameboard, [1, 1]);
+      console.log(player2.gameboard.grid)
+      expect(result).toBe('miss');
+    });
+  });
