@@ -23,6 +23,7 @@ export class Gameboard {
 
         coords.forEach(([cx, cy]) => (this.grid[cx][cy] = ship));
         this.ships.push(ship);
+        return coords
     }
     
     receiveAttack (coord) {

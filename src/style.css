@@ -1,8 +1,82 @@
 body {
-    background-color: salmon;
-  }
+  /* background-color: red; */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.91) ) ,url(https://nationalinterest.org/sites/default/files/styles/desktop__1260_/public/main_images/U.S.%20Navy%20Iowa-Class%20Battleship.jpg?itok=KF4imZzX);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+  color: aliceblue;
+}
 
-img {
-  height: 100px;
-  width: 200px;
+.parent {
+  display: flex;
+  
+}
+
+#player-board,
+#computer-board {
+  width: 400px;
+  height:  600px;
+  background-color: rgba(0, 0, 0, 0.322);
+  background-attachment: fixed;
+  margin: 20px;
+  padding: 15px 0;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.box1,
+.box2 {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-rows: repeat(10, auto);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+}
+
+.cell {
+  opacity: 1;
+  width: 30px;
+  height: 30px;
+  border: 1px solid white;
+}
+
+.cell:hover {
+  background : linear-gradient( rgba(196, 196, 196, 0.199), rgba(0, 0, 0, 0.623) );
+}
+
+.cell.hit {
+  background-color: red;
+}
+
+.cell.miss {
+  background-color: gray;
+}
+
+.row {
+  margin: 0;
+  border: 0;
+}
+
+.ships {
+  border: 1px solid white;
+  width: 80%;
+  height: 30%;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
 }

@@ -1,33 +1,46 @@
-import Gameboard from './gameboard';
-import Player from './player';
-import { renderBoard } from './ui';
+import { Player } from './player.js';
+import { renderBoard } from './ui.js';
+import style from './style.css'
 
-const playerBoard = Gameboard();
-const computerBoard = Gameboard();
-const player = Player('Player');
-const computer = Player('Computer');
 
-// Set up the UI
-const playerContainer = document.querySelector('#player-board');
-const computerContainer = document.querySelector('#computer-board');
 
-// Place some ships as a test
-playerBoard.placeShip(Ship(3), 0, 0, 'horizontal');
-computerBoard.placeShip(Ship(3), 2, 2, 'vertical');
 
-// Main game loop
-const playGame = () => {
-  // Render boards
-  renderBoard(playerBoard.board, playerContainer);
-  renderBoard(computerBoard.board, computerContainer);
+const player1 = new Player("player 1");
+const computer = new Player("computer");
 
-  // Add click event for attacking the computer
-  computerContainer.addEventListener('click', (e) => {
-    const x = ...; // calculate x from event
-    const y = ...; // calculate y from event
-    player.attack(computerBoard, x, y);
-    // Check if the game is over
-  });
-};
+const ship1 = computer.gameboard.placeShip([0,0], "vertical", 2);
+const ship2 = computer.gameboard.placeShip([0,4], "horizontal", 3);
+const ship3 = computer.gameboard.placeShip([5,3], "horizontal", 5);
 
-playGame();
+player1.attack(computer.gameboard, [0, 0])
+player1.attack(computer.gameboard, [0, 1])
+
+// document.querySelector("#computer-board").innerHTML = 
+
+const player1Board = document.querySelector(".box1");
+const computerBoard = document.querySelector(".box2");
+
+renderBoard.board(player1.gameboard.grid, player1Board);
+renderBoard.board(computer.gameboard.grid, computerBoard);
+
+// console.log(ship1)
+// console.log(computer.gameboard)
+renderBoard.ships(ship1, computerBoard);
+renderBoard.ships(ship2, computerBoard);
+renderBoard.ships(ship3, computerBoard);
+
+computerBoard.addEventListener('click', (e) => {
+    if (e.target.classList.contains('cell')) {
+        // Find the parent row
+        const row = Array.from(computerBoard.children).indexOf(e.target.parentElement);
+        // Find the column
+        const col = Array.from(e.target.parentElement.children).indexOf(e.target);
+    
+        // console.log(`Clicked cell at (${row}, ${col})`);
+        const hel = player1.attack(computer.gameboard, [row, col])
+        // computer.gameboard.receiveAttack([row, col])
+        e.target.classList.add(hel);
+        console.log(computer.gameboard.receiveAttack)
+      }
+    
+});
