@@ -21,7 +21,7 @@ export class renderBoard {
         coord.forEach((item, i) => {
             const [x, y] = coord[i];
 
-            container.children[x].children[y].style.background = "rgba(70, 70, 70, 0.6)";
+            // container.children[x].children[y].style.background = "rgba(80, 70, 70, 0.6)";
             container.children[x].children[y].id = "ship"
         })      
     }
