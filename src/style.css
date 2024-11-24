@@ -21,16 +21,16 @@ body {
 #player-board,
 #computer-board {
   width: 400px;
-  height:  600px;
+  height:  580px;
   background-color: rgba(0, 0, 0, 0.322);
   background-attachment: fixed;
   margin: 20px;
-  padding: 15px 0;
+  padding: 25px 0;
   border-radius: 22px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .box1,
