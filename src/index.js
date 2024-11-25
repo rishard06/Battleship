@@ -6,18 +6,19 @@ import style from './style.css'
 const player1 = new Player("player 1");
 const computer = new Player("computer");
 
-const ranCoord1 = randoms.randomCoord(10, 2);
-const ranCoord2 = randoms.randomCoord(10, 3);
-const ranCoord3 = randoms.randomCoord(10, 3);
-const ranCoord4 = randoms.randomCoord(10, 4);
-const ranCoord5 = randoms.randomCoord(10, 5);
-console.log(ranCoord1.x, ranCoord1.y, ranCoord1.direction)
+const ranCoord1 = randoms.placeRandomShip(computer.gameboard, 2);
+const ranCoord2 = randoms.placeRandomShip(computer.gameboard, 3);
+const ranCoord3 = randoms.placeRandomShip(computer.gameboard, 3);
+const ranCoord4 = randoms.placeRandomShip(computer.gameboard, 4);
+const ranCoord5 = randoms.placeRandomShip(computer.gameboard, 5);
 
-const ship1 = computer.gameboard.placeShip([ranCoord1.x,ranCoord1.y], ranCoord1.direction, 2);
-const ship2 = computer.gameboard.placeShip([0,4], "horizontal", 3);
-const ship3 = computer.gameboard.placeShip([2,3], "horizontal", 3);
-const ship4 = computer.gameboard.placeShip([7,4], "horizontal", 4);
-const ship5 = computer.gameboard.placeShip([5,3], "horizontal", 5);
+const ship1 = computer.gameboard.placeShip([ranCoord1.x,ranCoord1.y], ranCoord1.direction, ranCoord1.shipLength);
+const ship2 = computer.gameboard.placeShip([ranCoord2.x,ranCoord2.y], ranCoord2.direction, ranCoord2.shipLength);
+const ship3 = computer.gameboard.placeShip([ranCoord3.x,ranCoord3.y], ranCoord3.direction, ranCoord3.shipLength);
+const ship4 = computer.gameboard.placeShip([ranCoord4.x,ranCoord4.y], ranCoord4.direction, ranCoord4.shipLength);
+const ship5 = computer.gameboard.placeShip([ranCoord5.x,ranCoord5.y], ranCoord5.direction, ranCoord5.shipLength);
+
+console.log(computer.gameboard, ship1)
 
 const player1Board = document.querySelector(".box1");
 const computerBoard = document.querySelector(".box2");
@@ -28,6 +29,8 @@ renderBoard.board(computer.gameboard.grid, computerBoard);
 renderBoard.ships(ship1, computerBoard);
 renderBoard.ships(ship2, computerBoard);
 renderBoard.ships(ship3, computerBoard);
+renderBoard.ships(ship4, computerBoard);
+renderBoard.ships(ship5, computerBoard);
 
 computerBoard.addEventListener('click', function eventHundler(e) {
     if (e.target.classList.contains('cell')) {
